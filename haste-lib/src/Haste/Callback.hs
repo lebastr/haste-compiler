@@ -29,6 +29,7 @@ data Event a where
   OnLoad      :: Event (IO ())
   OnUnload    :: Event (IO ())
   OnChange    :: Event (IO ())
+  OnInput     :: Event (IO ())
   OnFocus     :: Event (IO ())
   OnBlur      :: Event (IO ())
   OnMouseMove :: Event (IO ())
@@ -65,6 +66,7 @@ evtName evt =
     OnKeyUp     -> "keyup"
     OnKeyDown   -> "keydown"
     OnChange    -> "change"
+    OnInput     -> "input"
     OnFocus     -> "focus"
     OnBlur      -> "blur"
 
