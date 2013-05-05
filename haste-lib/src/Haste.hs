@@ -1,5 +1,5 @@
 {-# LANGUAGE ForeignFunctionInterface, EmptyDataDecls #-}
-module Haste (alert, prompt, eval, round_, floor_, ceiling_, fromInt, writeLog, JSString,
+module Haste (alert, prompt, eval, round_, floor_, ceiling_, fromInt, writeLog, JSString, getTime, 
               catJSStr, toJSStr, fromJSStr,
               module Haste.Readable, module Haste.Showable,
               module Haste.Callback, module Haste.Random) where
@@ -14,6 +14,12 @@ foreign import ccall jsLog    :: JSString -> IO ()
 foreign import ccall jsPrompt :: JSString -> IO JSString
 foreign import ccall jsEval   :: JSString -> IO JSString
 foreign import ccall jsCat    :: Ptr [JSString] -> JSString -> JSString
+foreign import ccall jsTime   :: IO Int
+
+
+-- | Javascript getTime function
+getTime :: IO Int
+getTime = jsTime
 
 -- | Javascript alert() function.
 alert :: String -> IO ()
